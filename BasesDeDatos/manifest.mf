@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Name: COMPONENTE
+nombre: Cableado.IGestion
+clase: basesdedatos.BasesDeDatos
+
