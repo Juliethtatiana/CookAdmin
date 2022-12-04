@@ -10,5 +10,6 @@ package Cableado;
  * @author Julie
  */
 public interface IGestion {
+    void conectarBasedeDatos();
     void gestionarInformación();
 }

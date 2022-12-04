@@ -60,7 +60,8 @@ public class Administrador implements IModerador{
 		try {
 			Class cls = crg2.getClase(IGestion.class.getName());
 			IGestion com = (IGestion) cls.newInstance();
-			com.gestionarInformación();
+			com.conectarBasedeDatos();
+                        
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente bases de datos");
 		}
