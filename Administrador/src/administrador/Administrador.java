@@ -16,6 +16,7 @@ import Cableado.IInforme;
 import Cableado.IRecaudo;
 import Cableado.IRegistro;
 import Cableado.IModerador;
+import java.sql.ResultSet;
 import utilidades.Cargador;
 
 public class Administrador implements IModerador{
@@ -61,6 +62,9 @@ public class Administrador implements IModerador{
 			Class cls = crg2.getClase(IGestion.class.getName());
 			IGestion com = (IGestion) cls.newInstance();
 			com.conectarBasedeDatos();
+                        ResultSet rs= com.consultarMenu();
+                        JOptionPane.showMessageDialog(null, "los platos a la carta son: " + rs.getString("Nombre"));
+                        
                         
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente bases de datos");

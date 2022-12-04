@@ -5,6 +5,9 @@
  */
 package Cableado;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Julie
@@ -12,4 +15,5 @@ package Cableado;
 public interface IGestion {
     void conectarBasedeDatos();
     void gestionarInformación();
+    ResultSet consultarMenu() throws SQLException;
 }

@@ -38,12 +38,14 @@ public class BasesDeDatos implements IGestion {
         
     }
     
+    @Override
     public ResultSet consultarMenu() throws SQLException{
         
         java.sql.Statement st= c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet rs= st.executeQuery("select * from plato");
         //JOptionPane.showMessageDialog(null, "holi desde consultar menu");
         if(rs.next()){
+            
             return rs;
         }
         return null;
@@ -67,15 +69,7 @@ public class BasesDeDatos implements IGestion {
         } catch (SQLException ex) {
             Logger.getLogger(BasesDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            ResultSet rs = consultarMenu();
-            if(rs!=null){
-                JOptionPane.showMessageDialog(null, "los platos a la carta son: " + rs.getString("Nombre"));
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(BasesDeDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     
     }
     
