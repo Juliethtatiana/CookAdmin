@@ -13,7 +13,11 @@ import java.sql.SQLException;
  * @author Julie
  */
 public interface IGestion {
+    
+    
+    IGestion getInstance();
     void conectarBasedeDatos();
     void gestionarInformación();
     ResultSet consultarMenu() throws SQLException;
+    
 }

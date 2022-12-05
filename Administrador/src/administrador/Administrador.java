@@ -60,8 +60,8 @@ public class Administrador implements IModerador{
 		// Para traer bases de datos
 		try {
 			Class cls = crg2.getClase(IGestion.class.getName());
-			IGestion com = (IGestion) cls.newInstance();
-			com.conectarBasedeDatos();
+			IGestion com = (IGestion) cls.newInstance() ;
+                        JOptionPane.showMessageDialog(null, com.getInstance());
                         ResultSet rs= com.consultarMenu();
                         JOptionPane.showMessageDialog(null, "los platos a la carta son: " + rs.getString("Nombre"));
                         
