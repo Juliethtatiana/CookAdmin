@@ -4,18 +4,27 @@
  * and open the template in the editor.
  */
 package vistaPagos;
-
+import pagos.Documento;
 /**
  *
  * @author vramirez
  */
-public class Factura extends javax.swing.JFrame {
+public class Factura extends javax.swing.JFrame{
 
     /**
      * Creates new form Factura
      */
-    public Factura() {
+    public Factura() extends Documento{
         initComponents();
+    public void pagarPorTarjeta(tarjetaPago elm) {
+    }
+
+    public void pagarPorEfectivo(efectivoPago elm) {
+    }
+        
+        
+        
+        
     }
 
     /**
