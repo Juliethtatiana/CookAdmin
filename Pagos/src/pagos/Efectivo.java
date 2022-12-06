@@ -14,7 +14,7 @@ public class Efectivo extends FormaPago{
         v.pagarPorEfectivo(this);
     }
     public efectivoPago(){
-
+        
     }
 
     private static class Visitador {
@@ -23,7 +23,7 @@ public class Efectivo extends FormaPago{
         }
 
         private void pagarPorEfectivo(Efectivo aThis) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not suppoort."); //To change body of generated methods, choose Tools | Templates.
         }
     }
 }
