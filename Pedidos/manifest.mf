@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Name: COMPONENTE
-nombre: Cableado.IRegistro
-clase: pedidos.Pedidos
-
