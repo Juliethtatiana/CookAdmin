@@ -17,10 +17,13 @@ import Cableado.IRecaudo;
 import Cableado.IRegistro;
 import Cableado.IModerador;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import utilidades.Cargador;
 
 public class Administrador implements IModerador{
 
+    ArrayList<String> nPlato;
+    
     /**
      * @param args the command line arguments
      */
@@ -33,17 +36,35 @@ public class Administrador implements IModerador{
         Class cls1 = null;
     
         Cargador crg = new Cargador("front");
-
+        Cargador crg2 = new Cargador("back");
+        
+        try {
+			Class cls = crg2.getClase(IGestion.class.getName());
+			IGestion com = (IGestion) cls.newInstance() ;
+                        //JOptionPane.showMessageDialog(null, com.getInstance());
+                        //JOptionPane.showMessageDialog(null, "los platos a la carta son: " + rs.getString("Nombre"));
+                        nPlato= com.consultarMenu();
+                        
+                       
+                        
+                        
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No hay componente bases de datos");
+		}
         
         //para Pedido
+        
         try {
 			Class cls = crg.getClase(IRegistro.class.getName());
 			IRegistro com = (IRegistro) cls.newInstance();
-			com.registrarPedido();
+			com.construirMenu(nPlato); // implementacion patron visitor
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente de pedido");
 		}
+        
         //para Financiero
+        
+        /*
         try {
 			Class cls = crg.getClase(IInforme.class.getName());
 			IInforme com = (IInforme) cls.newInstance();
@@ -51,13 +72,14 @@ public class Administrador implements IModerador{
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente financiero");
 		}
-        
+        */
         
         // Para back-end
 			
-		Cargador crg2 = new Cargador("back");
+		
 
 		// Para traer bases de datos
+                /*
 		try {
 			Class cls = crg2.getClase(IGestion.class.getName());
 			IGestion com = (IGestion) cls.newInstance() ;
@@ -68,9 +90,12 @@ public class Administrador implements IModerador{
                         
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente bases de datos");
-		}
+		}*/
+                
+                
                 
                 // Para traer pagos
+                /*
 		try {
 			Class cls = crg2.getClase(IRecaudo.class.getName());
 			IRecaudo com = (IRecaudo) cls.newInstance();
@@ -78,7 +103,7 @@ public class Administrador implements IModerador{
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente de pago");
 		}
-
+*/
         
     }
     

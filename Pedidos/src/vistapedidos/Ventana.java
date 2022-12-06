@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cableado;
+package vistapedidos;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author Julie
+ * @author admin2
  */
-public interface IRegistro {
-    void registrarPedido();
-    void construirMenu(ArrayList<String> p);
+public abstract class Ventana extends javax.swing.JFrame {
+    public abstract void mostrarMenu( ArrayList<String> p);
 }

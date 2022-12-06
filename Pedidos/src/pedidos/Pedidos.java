@@ -12,12 +12,29 @@ package pedidos;
 import javax.swing.JOptionPane;
 
 import Cableado.IRegistro;
+import java.util.ArrayList;
+import vistapedidos.Ventana;
+import vistapedidos.vistaPedido;
+
 
 public class Pedidos implements IRegistro {
-
+    
+    private Ventana constructor = new vistaPedido();
+    ArrayList<String> platos;
+    
+    
+    
+  
     @Override
     public void registrarPedido() {
-        JOptionPane.showMessageDialog(null, "hola desde componente de pedido"); //To change body of generated methods, choose Tools | Templates.
+            
+    }
+
+    @Override
+    public void construirMenu(ArrayList<String> p) {
+        //JOptionPane.showMessageDialog(null, ped);
+        constructor.mostrarMenu(p);
+        constructor.setVisible(true);
     }
 
 }
