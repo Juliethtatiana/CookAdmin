@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/admin2/Documents/GitHub/CookAdmin/Pagos/src/pagos/Efectivo.java</file>
-            <file>file:/C:/Users/admin2/Documents/GitHub/CookAdmin/Pagos/src/pagos/Cliente.java</file>
+
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/pagos/Cliente.java</file>
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/pagos/Efectivo.java</file>
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/pagos/Tarjeta.java</file>
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/pagos/Documento.java</file>
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/vistaPagos/Factura.java</file>
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/pagos/FormaPago.java</file>
+            <file>file:/C:/Users/vramirez/Documents/u/CoockAdmin/CookAdmin/Pagos/src/pagos/Pagos.java</file>
+
         </group>
     </open-files>
 </project-private>
