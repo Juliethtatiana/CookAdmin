@@ -5,12 +5,17 @@
  */
 package pedidos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author admin2
  */
 public class Entrada extends Comida{
-    public Entrada(){
-        super();
+    public Entrada(String n, int c, double p, String t){
+        
+        super(n, c, p, t);
+        JOptionPane.showMessageDialog(null,"holix2"+n);
     }
+    
 }

@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import pedidos.Comida;
 import pedidos.Entrada;
+import pedidos.Postre;
 import utilidades.Cargador;
 
 /**
@@ -164,12 +166,26 @@ public class vistaPedido extends Ventana{
             IGestion com = (IGestion) cls.newInstance() ;
             
             ResultSet r = com.gestionarInformación(idPlatos.get(listaComidas.getSelectedIndex()));
+            JOptionPane.showMessageDialog(null,r.getString("tipoPlato"));
             
-            if(r.next())
-                if(r.getString("tipoComida")== "Entrada"){
-                     Entrada plato= new Entrada();
-                     jTextArea1.setText(plato.getNombre());
-                }
+                
+                if(r.getString("tipoPlato").equals("Entrada")){
+                   // JOptionPane.showMessageDialog(null,r.getString("Nombre"));
+                     Comida plato= new Entrada(r.getString("Nombre"), 1,1.2,r.getString("tipoPlato"));
+                     //JOptionPane.showMessageDialog(null,"holix2"+plato.getNombre());
+                     jTextArea1.setText(jTextArea1.getText()+plato.getNombre()+" \n");
+                
+            }
+                if(r.getString("tipoPlato").equals("Postre")){
+                   // JOptionPane.showMessageDialog(null,r.getString("Nombre"));
+                     Comida plato= new Postre(r.getString("Nombre"), 1,1.2,r.getString("tipoPlato"));
+                     //JOptionPane.showMessageDialog(null,"holix2"+plato.getNombre());
+                     jTextArea1.setText(jTextArea1.getText()+plato.getNombre()+" \n");
+                
+            }
+            
+            
+                
                     
             
         } catch (Exception e) {

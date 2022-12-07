@@ -5,6 +5,8 @@
  */
 package pedidos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author admin2
@@ -12,9 +14,18 @@ package pedidos;
 public abstract class Comida {
     private String Nombre;
     private int Cantidad;
-    private int PrecioAdicion;
+    private double PrecioAdicion;
     private String Tipo;
-
+    
+    public Comida(String n, int c, double p, String t ){
+        
+        JOptionPane.showMessageDialog(null,"constructor"+Nombre);
+        this.Nombre=n;
+        this.Cantidad=c;
+        this.PrecioAdicion=p;
+        this.Tipo=t;
+    
+    }
     public String getNombre() {
         return Nombre;
     }
@@ -31,7 +42,7 @@ public abstract class Comida {
         this.Cantidad = Cantidad;
     }
 
-    public int getPrecioAdicion() {
+    public double getPrecioAdicion() {
         return PrecioAdicion;
     }
 
