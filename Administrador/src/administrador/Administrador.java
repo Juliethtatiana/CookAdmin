@@ -64,48 +64,7 @@ public class Administrador implements IModerador{
 			JOptionPane.showMessageDialog(null, "No hay componente de pedido");
 		}
         
-        //para Financiero
         
-        /*
-        try {
-			Class cls = crg.getClase(IInforme.class.getName());
-			IInforme com = (IInforme) cls.newInstance();
-			com.generarInforme();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No hay componente financiero");
-		}
-        */
-        
-        // Para back-end
-			
-		
-
-		// Para traer bases de datos
-                /*
-		try {
-			Class cls = crg2.getClase(IGestion.class.getName());
-			IGestion com = (IGestion) cls.newInstance() ;
-                        JOptionPane.showMessageDialog(null, com.getInstance());
-                        ResultSet rs= com.consultarMenu();
-                        JOptionPane.showMessageDialog(null, "los platos a la carta son: " + rs.getString("Nombre"));
-                        
-                        
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No hay componente bases de datos");
-		}*/
-                
-                
-                
-                // Para traer pagos
-                /*
-		try {
-			Class cls = crg2.getClase(IRecaudo.class.getName());
-			IRecaudo com = (IRecaudo) cls.newInstance();
-			com.RecaudarPago();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No hay componente de pago");
-		}
-*/
         
     }
     

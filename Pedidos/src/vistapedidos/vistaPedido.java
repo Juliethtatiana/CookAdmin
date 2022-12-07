@@ -158,10 +158,7 @@ public class vistaPedido extends Ventana{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
-        // TODO add your handling code here:
-        Object[] options1 = { "Pagar ", "Choose A Random Number",
-                "Quit" };
-        
+        // TODO add your handling code here: 
         JPanel panel = new JPanel();
         panel.add(new JLabel("el total del pedido es: "+f.calcularMonto()+ "\n¿desea facturar?"));
        int result=JOptionPane.showOptionDialog(null, panel, null,
@@ -177,7 +174,7 @@ public class vistaPedido extends Ventana{
             } catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente pagos");
         }
-          JOptionPane.showMessageDialog(null, "componente de pagos");
+          
        }
     }//GEN-LAST:event_btnFacturarActionPerformed
 
