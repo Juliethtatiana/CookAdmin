@@ -9,12 +9,9 @@ package pagos;
  *
  * @author vramirez
  */
-public class Tarjeta extends FormaPago{
-    public void aceptar (Visitador v){
+public class Tarjeta implements FormaPago{
+    public void aceptar (Documento v){
         v.pagarPorTarjeta(this);
-    }
-    
-    public tarjetaPago(){
     }
     
 }

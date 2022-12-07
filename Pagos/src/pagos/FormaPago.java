@@ -9,9 +9,9 @@ package pagos;
  *
  * @author vramirez
  */
-public abstract class FormaPago {
-    public void aceptar (Visitador v){
-        
-    }
+interface FormaPago {
+    
+    public abstract void aceptar (Documento v);
+ 
     
 }

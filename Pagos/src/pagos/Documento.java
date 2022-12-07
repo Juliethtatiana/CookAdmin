@@ -9,11 +9,10 @@ package pagos;
  *
  * @author vramirez
  */
-public abstract class Documento {
-      public abstract void pagarPorTarjeta(tarjetaPago elm);
+public interface Documento {
+     
+    public abstract void pagarPorTarjeta(Tarjeta t);
 
-    public abstract void pagarPorEfectivo(efectivoPago elm);
+    public abstract void pagarPorEfectivo(Efectivo e);
 
-public  VisitadorConcreto1(){
-}
 }

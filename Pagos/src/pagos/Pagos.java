@@ -17,7 +17,11 @@ public class Pagos implements IRecaudo {
 
     @Override
     public void RecaudarPago() {
-        JOptionPane.showMessageDialog(null, "hola desde componente de pagos"); //To change body of generated methods, choose Tools | Templates.
+        
+        Factura f = new Factura();
+        f.setVisible(true);
     }
+
+    
 
 }

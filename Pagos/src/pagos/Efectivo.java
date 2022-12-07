@@ -9,21 +9,9 @@ package pagos;
  *
  * @author vramirez
  */
-public class Efectivo extends FormaPago{
-    public void aceptar (Visitador v){
+   class Efectivo implements FormaPago{
+    public void aceptar (Documento v){
         v.pagarPorEfectivo(this);
     }
-    public efectivoPago(){
-        
-    }
 
-    private static class Visitador {
-
-        public Visitador() {
-        }
-
-        private void pagarPorEfectivo(Efectivo aThis) {
-            throw new UnsupportedOperationException("Not suppoort."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
 }

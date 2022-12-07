@@ -6,6 +6,7 @@
 package vistapedidos;
 
 import Cableado.IGestion;
+import Cableado.IRecaudo;
 import Comanda.FabricaRegistros;
 import Comanda.Factura;
 import Comanda.Registro;
@@ -13,7 +14,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import pedidos.Comida;
 import pedidos.Entrada;
 import pedidos.Plato;
@@ -28,7 +31,7 @@ public class vistaPedido extends Ventana{
     
     private ArrayList<String> idPlatos;
     private Registro f;
-    
+    private Cargador crg = new Cargador("back");
 
     /**
      * Creates new form vistaPedido
@@ -156,7 +159,26 @@ public class vistaPedido extends Ventana{
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
         // TODO add your handling code here:
-       JOptionPane.showMessageDialog(null,"el total del pedido es: "+f.calcularMonto());
+        Object[] options1 = { "Pagar ", "Choose A Random Number",
+                "Quit" };
+        
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("el total del pedido es: "+f.calcularMonto()+ "\n¿desea facturar?"));
+       int result=JOptionPane.showOptionDialog(null, panel, null,
+                JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, null, null);
+       if(result== JOptionPane.YES_OPTION){
+          /* se llama al componente de pagos*/
+         
+            try {
+                Class cls = crg.getClase(IRecaudo.class.getName());
+                IRecaudo com = (IRecaudo) cls.newInstance() ;
+                com.RecaudarPago();
+            } catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No hay componente pagos");
+        }
+          JOptionPane.showMessageDialog(null, "componente de pagos");
+       }
     }//GEN-LAST:event_btnFacturarActionPerformed
 
     private void listaComidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaComidasActionPerformed
@@ -166,7 +188,7 @@ public class vistaPedido extends Ventana{
     private void botonAgregarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarComidaActionPerformed
         // TODO add your handling code here:
         //JOptionPane.showMessageDialog(null, "plato a agregar:" + idPlatos.get(listaComidas.getSelectedIndex()));
-        Cargador crg = new Cargador("back");
+        
         
         
         try {
