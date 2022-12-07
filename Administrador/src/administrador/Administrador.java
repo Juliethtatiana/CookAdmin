@@ -25,12 +25,7 @@ public class Administrador implements IModerador{
     ArrayList<String> nPlato= new ArrayList<String>();
     ArrayList<String> idPlato= new ArrayList<String>();
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        new Administrador().moderar();
-    }
+    
 
     @Override
     public void moderar() {
