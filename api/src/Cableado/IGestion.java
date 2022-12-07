@@ -18,7 +18,7 @@ public interface IGestion {
     
     IGestion getInstance();
     void conectarBasedeDatos();
-    void gestionarInformación();
-    ArrayList<String> consultarMenu();
+    ResultSet gestionarInformación(String id);
+    ResultSet consultarMenu();
     
 }

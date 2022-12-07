@@ -14,4 +14,37 @@ public abstract class Comida {
     private int Cantidad;
     private int PrecioAdicion;
     private String Tipo;
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public int getCantidad() {
+        return Cantidad;
+    }
+
+    public void setCantidad(int Cantidad) {
+        this.Cantidad = Cantidad;
+    }
+
+    public int getPrecioAdicion() {
+        return PrecioAdicion;
+    }
+
+    public void setPrecioAdicion(int PrecioAdicion) {
+        this.PrecioAdicion = PrecioAdicion;
+    }
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
+    }
+    
 }

@@ -22,7 +22,8 @@ import utilidades.Cargador;
 
 public class Administrador implements IModerador{
 
-    ArrayList<String> nPlato;
+    ArrayList<String> nPlato= new ArrayList<String>();
+    ArrayList<String> idPlato= new ArrayList<String>();
     
     /**
      * @param args the command line arguments
@@ -43,7 +44,13 @@ public class Administrador implements IModerador{
 			IGestion com = (IGestion) cls.newInstance() ;
                         //JOptionPane.showMessageDialog(null, com.getInstance());
                         //JOptionPane.showMessageDialog(null, "los platos a la carta son: " + rs.getString("Nombre"));
-                        nPlato= com.consultarMenu();
+                        
+                        ResultSet rs= com.consultarMenu();
+                        while(rs.next()){
+                            nPlato.add(rs.getString("Nombre"));
+                            idPlato.add(rs.getString("idPlato"));
+            
+                        }
                         
                        
                         
@@ -57,7 +64,7 @@ public class Administrador implements IModerador{
         try {
 			Class cls = crg.getClase(IRegistro.class.getName());
 			IRegistro com = (IRegistro) cls.newInstance();
-			com.construirMenu(nPlato); // implementacion patron visitor
+			com.construirMenu(nPlato,idPlato); // implementacion patron visitor
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No hay componente de pedido");
 		}

@@ -10,5 +10,7 @@ package pedidos;
  * @author admin2
  */
 public class Entrada extends Comida{
-    
+    public Entrada(){
+        super();
+    }
 }

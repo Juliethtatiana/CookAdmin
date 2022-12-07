@@ -12,5 +12,5 @@ import java.util.ArrayList;
  * @author admin2
  */
 public abstract class Ventana extends javax.swing.JFrame {
-    public abstract void mostrarMenu( ArrayList<String> p);
+    public abstract void mostrarMenu( ArrayList<String> p, ArrayList<String> id);
 }

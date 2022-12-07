@@ -5,8 +5,14 @@
  */
 package vistapedidos;
 
+import Cableado.IGestion;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import pedidos.Entrada;
+import utilidades.Cargador;
 
 /**
  *
@@ -14,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class vistaPedido extends Ventana{
     
+    private ArrayList<String> idPlatos;
     
 
     /**
@@ -21,10 +28,11 @@ public class vistaPedido extends Ventana{
      */
     public vistaPedido() {
         initComponents();
-        
+        jTextArea1.setEditable(false);
     }
     
-    public void mostrarMenu(ArrayList<String> p){
+    public void mostrarMenu(ArrayList<String> p, ArrayList<String> id){
+            idPlatos=id;
             for(int i=0; i<p.size();i++){
                 //JOptionPane.showMessageDialog(null, "lista comida");
                 listaComidas.addItem(p.get(i));
@@ -49,8 +57,9 @@ public class vistaPedido extends Ventana{
         jButton2 = new javax.swing.JButton();
         botonAgregarComida = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,6 +97,11 @@ public class vistaPedido extends Ventana{
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 110, -1));
 
         botonAgregarComida.setText("Agregar");
+        botonAgregarComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarComidaActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonAgregarComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
         jButton1.setText("Generar Informe");
@@ -98,16 +112,17 @@ public class vistaPedido extends Ventana{
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 230, 100));
-
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Resumen del pedido:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+        jTextArea1.getAccessibleContext().setAccessibleName("Resumentxt");
+        jTextArea1.getAccessibleContext().setAccessibleParent(jPanel1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 250, 120));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistapedidos/menuIni.jpg"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 690));
@@ -126,10 +141,6 @@ public class vistaPedido extends Ventana{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -141,6 +152,30 @@ public class vistaPedido extends Ventana{
     private void listaComidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaComidasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaComidasActionPerformed
+
+    private void botonAgregarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarComidaActionPerformed
+        // TODO add your handling code here:
+        //JOptionPane.showMessageDialog(null, "plato a agregar:" + idPlatos.get(listaComidas.getSelectedIndex()));
+        Cargador crg = new Cargador("back");
+        
+        
+        try {
+            Class cls = crg.getClase(IGestion.class.getName());
+            IGestion com = (IGestion) cls.newInstance() ;
+            
+            ResultSet r = com.gestionarInformación(idPlatos.get(listaComidas.getSelectedIndex()));
+            
+            if(r.next())
+                if(r.getString("tipoComida")== "Entrada"){
+                     Entrada plato= new Entrada();
+                     jTextArea1.setText(plato.getNombre());
+                }
+                    
+            
+        } catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No hay componente bases de datos");
+        }
+    }//GEN-LAST:event_botonAgregarComidaActionPerformed
 
     
 
@@ -154,7 +189,8 @@ public class vistaPedido extends Ventana{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JComboBox<String> listaBebida;
     private javax.swing.JComboBox<String> listaComidas;
     // End of variables declaration//GEN-END:variables

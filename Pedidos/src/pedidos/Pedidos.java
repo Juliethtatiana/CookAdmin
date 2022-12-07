@@ -20,9 +20,6 @@ import vistapedidos.vistaPedido;
 public class Pedidos implements IRegistro {
     
     private Ventana constructor = new vistaPedido();
-    ArrayList<String> platos;
-    
-    
     
   
     @Override
@@ -31,9 +28,9 @@ public class Pedidos implements IRegistro {
     }
 
     @Override
-    public void construirMenu(ArrayList<String> p) {
-        //JOptionPane.showMessageDialog(null, ped);
-        constructor.mostrarMenu(p);
+    public void construirMenu(ArrayList<String> p, ArrayList<String> id) {
+        
+        constructor.mostrarMenu(p, id);
         constructor.setVisible(true);
     }
 

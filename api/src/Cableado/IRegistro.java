@@ -13,5 +13,5 @@ import java.util.ArrayList;
  */
 public interface IRegistro {
     void registrarPedido();
-    void construirMenu(ArrayList<String> p);
+    void construirMenu(ArrayList<String> p, ArrayList<String> id);
 }
