@@ -15,7 +15,7 @@ public class Entrada extends Comida{
     public Entrada(String n, int c, double p, String t){
         
         super(n, c, p, t);
-        JOptionPane.showMessageDialog(null,"holix2"+n);
+        //JOptionPane.showMessageDialog(null,"holix2"+n);
     }
     
 }

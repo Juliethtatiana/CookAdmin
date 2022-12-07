@@ -5,6 +5,7 @@
  */
 package Cableado;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public interface IGestion {
     
     
-    IGestion getInstance();
+    Connection getInstance();
     void conectarBasedeDatos();
     ResultSet gestionarInformación(String id);
     ResultSet consultarMenu();

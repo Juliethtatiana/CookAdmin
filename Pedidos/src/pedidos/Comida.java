@@ -19,7 +19,6 @@ public abstract class Comida {
     
     public Comida(String n, int c, double p, String t ){
         
-        JOptionPane.showMessageDialog(null,"constructor"+Nombre);
         this.Nombre=n;
         this.Cantidad=c;
         this.PrecioAdicion=p;

@@ -166,7 +166,7 @@ public class vistaPedido extends Ventana{
             IGestion com = (IGestion) cls.newInstance() ;
             
             ResultSet r = com.gestionarInformación(idPlatos.get(listaComidas.getSelectedIndex()));
-            JOptionPane.showMessageDialog(null,r.getString("tipoPlato"));
+            //JOptionPane.showMessageDialog(null,r.getString("tipoPlato"));
             
                 
                 if(r.getString("tipoPlato").equals("Entrada")){
