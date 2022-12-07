@@ -6,6 +6,9 @@
 package vistapedidos;
 
 import Cableado.IGestion;
+import Comanda.FabricaRegistros;
+import Comanda.Factura;
+import Comanda.Registro;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -13,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import pedidos.Comida;
 import pedidos.Entrada;
+import pedidos.Plato;
 import pedidos.Postre;
 import utilidades.Cargador;
 
@@ -23,6 +27,7 @@ import utilidades.Cargador;
 public class vistaPedido extends Ventana{
     
     private ArrayList<String> idPlatos;
+    private Registro f;
     
 
     /**
@@ -31,6 +36,8 @@ public class vistaPedido extends Ventana{
     public vistaPedido() {
         initComponents();
         jTextArea1.setEditable(false);
+        
+        f= (Factura) FabricaRegistros.generarRegistro("factura");
     }
     
     public void mostrarMenu(ArrayList<String> p, ArrayList<String> id){
@@ -56,7 +63,7 @@ public class vistaPedido extends Ventana{
         listaComidas = new javax.swing.JComboBox<>();
         listaBebida = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnFacturar = new javax.swing.JButton();
         botonAgregarComida = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -90,13 +97,13 @@ public class vistaPedido extends Ventana{
         jButton4.setText("Agregar");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
 
-        jButton2.setText("Facturar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnFacturar.setText("Facturar");
+        btnFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnFacturarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 110, -1));
+        jPanel1.add(btnFacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 110, -1));
 
         botonAgregarComida.setText("Agregar");
         botonAgregarComida.addActionListener(new java.awt.event.ActionListener() {
@@ -147,9 +154,10 @@ public class vistaPedido extends Ventana{
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+       JOptionPane.showMessageDialog(null,"el total del pedido es: "+f.calcularMonto());
+    }//GEN-LAST:event_btnFacturarActionPerformed
 
     private void listaComidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaComidasActionPerformed
         // TODO add your handling code here:
@@ -171,14 +179,16 @@ public class vistaPedido extends Ventana{
                 
                 if(r.getString("tipoPlato").equals("Entrada")){
                    // JOptionPane.showMessageDialog(null,r.getString("Nombre"));
-                     Comida plato= new Entrada(r.getString("Nombre"), 1,1.2,r.getString("tipoPlato"));
+                     Comida plato= new Entrada(r.getString("Nombre"), 1,r.getDouble("precio"),r.getString("tipoPlato"));
+                     f.añadirPlato(plato);
                      //JOptionPane.showMessageDialog(null,"holix2"+plato.getNombre());
                      jTextArea1.setText(jTextArea1.getText()+plato.getNombre()+" \n");
                 
             }
                 if(r.getString("tipoPlato").equals("Postre")){
                    // JOptionPane.showMessageDialog(null,r.getString("Nombre"));
-                     Comida plato= new Postre(r.getString("Nombre"), 1,1.2,r.getString("tipoPlato"));
+                     Comida plato= new Postre(r.getString("Nombre"), 1,r.getDouble("precio"),r.getString("tipoPlato"));
+                     f.añadirPlato(plato);
                      //JOptionPane.showMessageDialog(null,"holix2"+plato.getNombre());
                      jTextArea1.setText(jTextArea1.getText()+plato.getNombre()+" \n");
                 
@@ -197,8 +207,8 @@ public class vistaPedido extends Ventana{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarComida;
+    private javax.swing.JButton btnFacturar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

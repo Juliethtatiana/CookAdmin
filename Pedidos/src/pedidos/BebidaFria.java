@@ -10,5 +10,7 @@ package pedidos;
  * @author admin2
  */
 public class BebidaFria extends Bebida {
-    
+    public BebidaFria(String n, int c, double p, String t ){
+     super(n, c, p, t);
+    }
 }

@@ -9,8 +9,11 @@ package pedidos;
  *
  * @author admin2
  */
-public abstract class Bebida {
-    private String Nombre;
-    private int Tipo;
+public abstract class Bebida extends Plato{
     private boolean Alcoholica;
+    
+    public Bebida(String n, int c, double p, String t ){
+     super(n, c, p, t);
+    }
+    
 }

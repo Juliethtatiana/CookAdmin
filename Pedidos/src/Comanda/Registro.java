@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pedidos;
+package Comanda;
 
-import javax.swing.JOptionPane;
+import pedidos.Plato;
 
 /**
  *
  * @author admin2
  */
-public abstract class Comida extends Plato {
+public abstract class Registro {
+    private double montoTotal;
     
-    
-   public Comida(String n, int c, double p, String t ){
-       super(n, c, p, t);
-    
-    }
+    public abstract void añadirPlato(Plato p);
+    public abstract double calcularMonto();
     
 }
